@@ -11,5 +11,5 @@ export function ThemeWrapper({
 }>) {
   const [theme] = useTheme()
 
-  return <div className={cn(theme && `theme-${theme}`)}>{children}</div>
+  return <div className={cn(theme && `theme-${theme.theme}`)}>{children}</div>
 }
