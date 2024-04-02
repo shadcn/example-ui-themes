@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/styles/new-york/ui/button"
 import {
   Card,
   CardContent,
@@ -6,8 +6,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
+} from "@/components/styles/new-york/ui/card"
+import { Progress } from "@/components/styles/new-york/ui/progress"
 
 export function Example() {
   return (
