@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Themes
 
-## Getting Started
+## `themes.css`
 
-First, run the development server:
+This file has the CSS variables for the themes. The variables are defined for both light and dark themes.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```css
+.theme-orange {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+}
+
+.dark .theme-orange {
+  --background: 20 14.3% 4.1%;
+  --foreground: 60 9.1% 97.8%;
+}
+
+.theme-green {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+}
+
+.dark .theme-green {
+  --background: 20 14.3% 4.1%;
+  --foreground: 0 0% 95%;
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## `use-theme.ts`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This file defines a shared store for the theme. It uses the `useLocalStorage` (via atomWithStorage) to store the theme in the local storage.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+We use a simple string value to store the theme.
 
-## Learn More
+## `theme-wrapper.tsx`
 
-To learn more about Next.js, take a look at the following resources:
+Next, we wrap our components in a `<ThemeWrapper />` which reads the theme from the store and applies the CSS variables using a class i.e `theme-orange` or `theme-green`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## `theme-selector.tsx`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This component displays 3 buttons to set the theme. It uses the `setTheme` method from the store to set the theme.
